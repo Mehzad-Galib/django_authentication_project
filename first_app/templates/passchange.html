@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Password Change Page
+{% endblock title %}
+
+{% block body %}
+<form method="post" action="" style="width:50%; margin: auto" novalidate>
+    <h2 class="py-3">Password Change Page</h2>
+    <h6>Want to change your account information? <a class="btn btn-primary" href="{% url 'update_profile' %}">Click
+            Here</a>
+    </h6>
+    <!-- {{form | crispy }} -->
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+    {% for er in form.non_field_errors %}
+    <p class="bg-danger text-white p-3">{{er}}</p>
+    {% endfor %}
+    {% endif %}
+
+    {% for fm in form %}
+    {{fm.label_tag}}
+    {{fm}}
+
+    <p class="text-danger p-3">{{fm.errors | striptags }}</p>
+    {% endfor %}
+    <br>
+    <button class="btn btn-warning" type="submit">Change Password</button>
+</form>
+{% endblock body %}

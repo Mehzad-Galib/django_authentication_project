@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Profile Page
+{% endblock title %}
+
+{% block body %}
+
+<div style="width:50%; margin: auto">
+    <h2 class="py-3">Welcome to Profile Page, {{user}}</h2>
+
+    <h6>Want to change your password? <a class="btn btn-info" href="{% url 'passchange' %}">Click Here</a></h6>
+
+    <h6>Want to change your account information? <a class="btn btn-primary" href="{% url 'update_profile' %}">Click
+            Here</a>
+    </h6>
+</div>
+
+{% endblock body %}
